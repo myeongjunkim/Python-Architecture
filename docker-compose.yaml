@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  app:
+    container_name: app
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    ports:
+      - 8000:8000
+    env_file:
+      - ./secrets/.env
+    volumes:
+      - .:/code
+      - python-packages:/usr/local/lib/python3.10/site-packages
+      - python-bin:/usr/local/bin
+    networks:
+      - shared-network
+    command: /bin/bash scripts/start-dev.sh
+
+networks:
+  shared-network:
+    driver: bridge
+
+volumes:
+  python-packages:
+  python-bin:
+
+
