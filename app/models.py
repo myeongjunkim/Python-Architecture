@@ -16,7 +16,6 @@ class Batch:
         self.sku = sku
         self.eta = eta
         self._purchased_quantity = qty
-        self.available_quantity = qty
         self._allocations: set[OrderLine] = set()
 
     def __eq__(self, other: object) -> bool:
