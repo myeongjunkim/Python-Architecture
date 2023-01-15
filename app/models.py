@@ -48,7 +48,7 @@ class Batch:
         return sum(line.qty for line in self._allocations)
 
     @property
-    def abailable_quantity(self) -> int:
+    def available_quantity(self) -> int:
         return self._purchased_quantity - self.allocated_quantity
 
     def can_allocate(self, line: OrderLine) -> bool:
